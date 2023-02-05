@@ -1,0 +1,44 @@
+use std::default;
+
+
+struct Person {
+    name: String,
+    age: i32
+}
+
+struct Animal {
+    id: i32,
+    weight: f32
+}
+
+impl Default for Person {
+    fn default() -> Self {
+        Person {
+            name: "Tristan".to_string(),
+            age: 15
+        }
+    }
+}
+
+impl Default for Animal {
+    fn default() -> Self {
+        Animal { id: 12332, weight: 32.5 }
+    }
+}
+
+
+fn main(){
+    let person: Person = Person {
+        name: "Sepiroth".to_string(),
+        ..Person::default()
+    };
+
+    let animal: Animal = Animal {
+        id: 1,
+        ..Default::default()
+    };
+
+    println!("name: {}, age: {}", person.name, person.age);
+
+    println!("id: {}, weight: {}", animal.id, animal.weight);
+}
